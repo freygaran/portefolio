@@ -1,0 +1,43 @@
+<section id="experience" class="experience">
+  <div class="container">
+    <div class="exp-layout">
+      <div class="exp-header" appReveal revealClass="reveal-left">
+        <p class="section-label">Parcours</p>
+        <h2 class="section-title">Mon <span>expérience</span></h2>
+        <p class="section-subtitle">Chaque poste a contribué à construire une vision technique plus large et plus profonde.</p>
+      </div>
+
+      <div class="timeline">
+        @for (item of items; track item.company; let i = $index) {
+          <div class="timeline-item" appReveal [ngClass]="'delay-' + (i + 1)">
+            <div class="timeline-dot" [class.current]="item.current">
+              @if (item.current) {
+                <span class="dot-pulse"></span>
+              }
+            </div>
+            <div class="timeline-card card">
+              <div class="timeline-meta">
+                <span class="timeline-period">{{ item.period }}</span>
+                <span class="type-badge type-{{ item.type | lowercase }}">{{ item.type }}</span>
+                @if (item.current) {
+                  <span class="current-badge">Actuel</span>
+                }
+              </div>
+              <h3 class="timeline-role">{{ item.role }}</h3>
+              <p class="timeline-company">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M2 10h20"/></svg>
+                {{ item.company }} · {{ item.location }}
+              </p>
+              <p class="timeline-desc">{{ item.description }}</p>
+              <div class="timeline-tags">
+                @for (tag of item.tags; track tag) {
+                  <span class="tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

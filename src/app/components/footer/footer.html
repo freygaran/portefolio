@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="footer-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-mark">A</span>
+          <span class="logo-text">Arantes<span class="dot">.</span></span>
+        </div>
+        <p class="footer-tagline">Fullstack Developer · Angular · Node.js</p>
+      </div>
+
+      <nav class="footer-nav">
+        @for (link of links; track link.href) {
+          <a class="footer-link" (click)="scrollTo(link.href)">{{ link.label }}</a>
+        }
+      </nav>
+
+      <button class="back-top" (click)="scrollTop()" aria-label="Retour en haut">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© {{ year }} Azizet Onanga Freygis Arantes. Tous droits réservés.</p>
+      <p class="built-with">Construit avec <span class="accent">Angular</span> &amp; beaucoup de ☕</p>
+    </div>
+  </div>
+</footer>

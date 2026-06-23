@@ -1,0 +1,119 @@
+<section id="about" class="about">
+
+  <!-- ══ Rain de symboles code en fond ══ -->
+  <div class="code-rain" aria-hidden="true">
+    <span class="cr" style="--cx:4%;  --cy:8%;  --cd:0s;    --cv:19s; --cs:1rem">const</span>
+    <span class="cr" style="--cx:14%; --cy:72%; --cd:3.2s;  --cv:23s; --cs:0.8rem">&lt;/&gt;</span>
+    <span class="cr" style="--cx:24%; --cy:35%; --cd:6.1s;  --cv:16s; --cs:1.3rem">&#123; &#125;</span>
+    <span class="cr" style="--cx:42%; --cy:85%; --cd:1.7s;  --cv:21s; --cs:0.9rem">() =&gt;</span>
+    <span class="cr" style="--cx:56%; --cy:18%; --cd:8.4s;  --cv:26s; --cs:1.1rem">import</span>
+    <span class="cr" style="--cx:68%; --cy:52%; --cd:4.3s;  --cv:18s; --cs:0.75rem">return</span>
+    <span class="cr" style="--cx:79%; --cy:76%; --cd:7.0s;  --cv:22s; --cs:1.2rem">class</span>
+    <span class="cr" style="--cx:87%; --cy:28%; --cd:2.1s;  --cv:20s; --cs:0.85rem">.map()</span>
+    <span class="cr" style="--cx:11%; --cy:92%; --cd:9.5s;  --cv:24s; --cs:1.4rem">@Component</span>
+    <span class="cr" style="--cx:59%; --cy:60%; --cd:5.2s;  --cv:17s; --cs:0.7rem">async/await</span>
+    <span class="cr" style="--cx:33%; --cy:48%; --cd:11s;   --cv:27s; --cs:0.95rem">&lt;div&gt;</span>
+    <span class="cr" style="--cx:91%; --cy:88%; --cd:3.8s;  --cv:15s; --cs:1rem">npm run</span>
+    <span class="cr" style="--cx:74%; --cy:12%; --cd:13s;   --cv:29s; --cs:0.8rem">git push</span>
+    <span class="cr" style="--cx:21%; --cy:44%; --cd:0.8s;  --cv:21s; --cs:1.1rem">interface</span>
+    <span class="cr" style="--cx:47%; --cy:97%; --cd:7.8s;  --cv:25s; --cs:0.85rem">&#64;Injectable</span>
+    <span class="cr" style="--cx:65%; --cy:38%; --cd:2.5s;  --cv:19s; --cs:0.78rem">&#47;&#47; TODO</span>
+    <span class="cr" style="--cx:7%;  --cy:55%; --cd:14s;   --cv:23s; --cs:1.05rem">function()</span>
+    <span class="cr" style="--cx:83%; --cy:64%; --cd:5.8s;  --cv:20s; --cs:0.9rem">export</span>
+  </div>
+
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- ══ GAUCHE : cadre photo VS Code ══ -->
+      <div class="about-photo-col" appReveal revealClass="reveal-left">
+        <div class="photo-editor">
+
+          <!-- Barre titre style macOS/VS Code -->
+          <div class="editor-titlebar">
+            <div class="editor-dots">
+              <span class="dot-r"></span>
+              <span class="dot-y"></span>
+              <span class="dot-g"></span>
+            </div>
+            <div class="editor-tabs">
+              <span class="editor-tab active">azizet.profile.tsx</span>
+            </div>
+            <span class="editor-badge">TS JSX</span>
+          </div>
+
+          <!-- Zone photo avec numéros de ligne -->
+          <div class="photo-area">
+            <div class="line-numbers" aria-hidden="true">
+              <span>01</span><span>02</span><span>03</span><span>04</span>
+              <span>05</span><span>06</span><span>07</span><span>08</span>
+              <span>09</span><span>10</span><span>11</span><span>12</span>
+              <span>13</span><span>14</span><span>15</span>
+            </div>
+            <div class="photo-wrap">
+              <img src="avatar.jpg" alt="Azizet Onanga Freygis Arantes" class="about-photo" loading="lazy" />
+              <div class="scan-line"></div>
+            </div>
+          </div>
+
+          <!-- Barre de statut avec syntaxe JSX colorée -->
+          <div class="editor-statusbar">
+            <span class="status-jsx">
+              <span class="c-lt">&lt;</span><span class="c-tag">AzizetArantes</span>
+              <span class="c-attr"> role</span><span class="c-eq">=</span><span class="c-str">"fullstack"</span>
+              <span class="c-lt"> /&gt;</span><span class="c-cursor">▌</span>
+            </span>
+            <span class="status-right">
+              <span class="s-item">Ln 42</span>
+              <span class="s-item">UTF-8</span>
+              <span class="s-item s-ok">✓ Compiled</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Badges code flottants autour du cadre -->
+        <div class="cb cb1"><span>&lt;/&gt;</span></div>
+        <div class="cb cb2"><span>&#123; &#125;</span></div>
+        <div class="cb cb3"><span>() =&gt;</span></div>
+        <div class="cb cb4"><span>const dev</span></div>
+        <div class="cb cb5"><span>&#64;Component</span></div>
+      </div>
+
+      <!-- ══ DROITE : texte + stats ══ -->
+      <div class="about-text-col" appReveal revealClass="reveal-right">
+        <p class="section-label">{{ text.sectionLabel }}</p>
+        <h2 class="section-title">{{ text.title }} <span>{{ text.titleSpan }}</span></h2>
+        <p class="about-bio">{{ text.bio1 }}</p>
+        <p class="about-bio">{{ text.bio2 }}</p>
+
+        <ul class="highlight-list">
+          @for (item of text.highlights; track item) {
+            <li>
+              <span class="check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              {{ item }}
+            </li>
+          }
+        </ul>
+
+        <div class="stats-row">
+          @for (stat of text.stats; track stat.label) {
+            <div class="stat-chip">
+              <span class="stat-val">{{ stat.value }}</span>
+              <span class="stat-lbl">{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="about-actions">
+          <a href="assets/cv-azizet-arantes.pdf" download class="btn btn-primary">
+            {{ text.cvBtn }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

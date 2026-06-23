@@ -1,0 +1,14 @@
+<app-loader (done)="ready.set(true)"></app-loader>
+
+<div class="app-content" [class.app-ready]="ready()">
+  <app-navbar></app-navbar>
+  <main>
+    <app-hero></app-hero>
+    <app-about></app-about>
+    <app-skills></app-skills>
+    <app-projects></app-projects>
+    <app-experience></app-experience>
+    <app-contact></app-contact>
+  </main>
+  <app-footer></app-footer>
+</div>

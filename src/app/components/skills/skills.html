@@ -1,0 +1,33 @@
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <p class="section-label">Compétences</p>
+      <h2 class="section-title">Ma <span>stack technique</span></h2>
+      <p class="section-subtitle">Des outils et technologies que j'utilise au quotidien pour créer des applications robustes.</p>
+    </div>
+
+    <div class="categories">
+      @for (cat of categories; track cat.name; let i = $index) {
+        <div class="category" appReveal [ngClass]="'delay-' + (i + 1)">
+          <h3 class="category-title">{{ cat.name }}</h3>
+          <div class="skill-list">
+            @for (skill of cat.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-header">
+                  <div class="skill-meta">
+                    <span class="skill-tag">{{ skill.tag }}</span>
+                    <span class="skill-name">{{ skill.name }}</span>
+                  </div>
+                  <span class="skill-pct">{{ skill.level }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" [style.width.%]="skill.level"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,115 @@
+<section id="hero" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- ── GAUCHE : texte ── -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          {{ text.badge }}
+        </div>
+
+        <h1 class="hero-name">
+          <span class="line"      appLetterReveal [baseDelay]="300" [stagger]="42">AZIZET ONANGA</span>
+          <span class="line accent" appLetterReveal [baseDelay]="900" [stagger]="42">Freygis Arantes</span>
+        </h1>
+
+        <!-- Typewriter -->
+        <p class="hero-role hero-role-reveal">
+          <span class="typewriter-text">{{ currentTitle() }}</span><span
+            class="typewriter-cursor"
+            [class.visible]="showCursor()">|</span>
+        </p>
+
+        <p class="hero-tagline hero-tagline-reveal">{{ text.tagline }}</p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" (click)="scrollToSection('#projects')">
+            {{ text.ctaProjects }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-outline" (click)="scrollToSection('#contact')">
+            {{ text.ctaContact }}
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">4+</span>
+            <span class="stat-lbl">{{ text.statExp }}</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">8+</span>
+            <span class="stat-lbl">{{ text.statProjects }}</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">20+</span>
+            <span class="stat-lbl">{{ text.statTech }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DROITE : photo + orbites ── -->
+      <div class="hero-right">
+        <!-- Wrapper parallaxe (JS) -->
+        <div class="orbit-wrapper" [style.transform]="orbitTransform()">
+          <!-- Orbit system (CSS float) -->
+          <div class="orbit-system">
+
+            <div class="avatar">
+              <div class="avatar-inner">
+                <img src="avatar.jpg" alt="Azizet Onanga Freygis Arantes" class="avatar-photo" loading="eager" />
+              </div>
+              <div class="avatar-glow"></div>
+              <div class="avatar-border-ring"></div>
+            </div>
+
+            <!-- Anneau intérieur CW 22s -->
+            <div class="orbit-ring ring-inner">
+              @for (tech of innerTechs; track tech.label) {
+                <div class="orbit-arm" [style.transform]="'rotate(' + angleStr(tech.angle) + ')'">
+                  <span class="orbit-badge ring-inner-badge"
+                        [style.background]="tech.bg"
+                        [style.color]="tech.color"
+                        [style.border-color]="tech.color + '40'">
+                    {{ tech.label }}
+                  </span>
+                </div>
+              }
+            </div>
+
+            <!-- Anneau extérieur CCW 35s -->
+            <div class="orbit-ring ring-outer">
+              @for (tech of outerTechs; track tech.label) {
+                <div class="orbit-arm" [style.transform]="'rotate(' + angleStr(tech.angle) + ')'">
+                  <span class="orbit-badge ring-outer-badge"
+                        [style.background]="tech.bg"
+                        [style.color]="tech.color"
+                        [style.border-color]="tech.color + '40'">
+                    {{ tech.label }}
+                  </span>
+                </div>
+              }
+            </div>
+
+          </div><!-- /orbit-system -->
+        </div><!-- /orbit-wrapper -->
+      </div>
+
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>

@@ -1,0 +1,213 @@
+.contact {
+  background: var(--surface);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}
+
+.contact-desc {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    border-color: rgba(2, 245, 161, 0.3);
+    box-shadow: var(--glow);
+    transform: translateX(4px);
+    opacity: 1;
+  }
+}
+
+.social-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.social-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.social-handle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(2, 245, 161, 0.08);
+  border: 1px solid rgba(2, 245, 161, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--spring-green);
+  flex-shrink: 0;
+
+  svg { display: block; }
+}
+
+.social-arrow {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  .social-item:hover & { color: var(--spring-green); }
+}
+
+.contact-form-wrap {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+
+  @media (max-width: 640px) { padding: 24px; }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 640px) { grid-template-columns: 1fr; }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+
+  input, textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    resize: vertical;
+    width: 100%;
+
+    &::placeholder { color: rgba(143, 168, 176, 0.5); }
+
+    &:focus {
+      border-color: rgba(2, 245, 161, 0.4);
+      box-shadow: 0 0 0 3px rgba(2, 245, 161, 0.08);
+    }
+  }
+
+  textarea { min-height: 130px; }
+}
+
+.submit-btn {
+  align-self: flex-start;
+  min-width: 200px;
+  justify-content: center;
+
+  &.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(7, 25, 30, 0.3);
+  border-top-color: var(--deep-onyx);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 40px 24px;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(2, 245, 161, 0.1);
+  border: 2px solid rgba(2, 245, 161, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--spring-green);
+}
+
+.success-state h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.success-state p {
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.7;
+}

@@ -1,0 +1,154 @@
+/* ── Splash screen loader ── */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--deep-onyx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.48s ease, transform 0.48s cubic-bezier(0.32, 0, 0.67, 1);
+
+  &[data-phase="exit"] {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+  }
+}
+
+/* ── Name word ── */
+.splash-word {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  line-height: 1;
+}
+
+/* ── Individual letters ── */
+.splash-letter {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3.2rem, 9vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.28s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fill sweep: turns green left-to-right */
+  .splash[data-phase="fill"] &,
+  .splash[data-phase="morph"] &,
+  .splash[data-phase="exit"] & {
+    color: var(--spring-green);
+    text-shadow: 0 0 32px rgba(2, 245, 161, 0.4);
+    transition:
+      color 0.12s ease calc(var(--idx, 0) * 0.07s),
+      text-shadow 0.12s ease calc(var(--idx, 0) * 0.07s),
+      opacity 0.3s ease,
+      transform 0.65s cubic-bezier(0.32, 0, 0.67, 1);
+  }
+
+  /* Morph/exit: non-A letters fade out */
+  .splash[data-phase="morph"] &:not(.splash-a),
+  .splash[data-phase="exit"] &:not(.splash-a) {
+    opacity: 0;
+    transform: scale(0.85) translateY(-8px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+}
+
+/* ── The "A" that flies to the navbar logo ── */
+.splash-a {
+  transform-origin: center;
+  transition:
+    opacity 0.28s ease,
+    color 0.12s ease,
+    text-shadow 0.12s ease,
+    transform 0.62s cubic-bezier(0.32, 0, 0.67, 1),
+    background-color 0.3s ease 0.15s,
+    border-radius 0.3s ease 0.15s,
+    padding 0.3s ease 0.15s;
+
+  .splash[data-phase="morph"] &,
+  .splash[data-phase="exit"] & {
+    background-color: var(--spring-green);
+    color: var(--deep-onyx);
+    border-radius: 14px;
+    padding: 0.05em 0.15em;
+    text-shadow: none;
+    /* transform is set via Angular binding */
+  }
+}
+
+/* ── Cursor ── */
+.splash-cursor {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3.2rem, 9vw, 5.5rem);
+  font-weight: 300;
+  color: var(--spring-green);
+  opacity: 1;
+  transition: opacity 0.15s ease;
+  user-select: none;
+  line-height: 1;
+
+  &.hidden { opacity: 0; }
+}
+
+/* ── Tagline below name ── */
+.splash-tagline {
+  display: flex;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: taglineIn 0.5s ease 1.2s forwards;
+}
+
+.tl-char {
+  opacity: 0;
+  animation: charIn 0.3s ease calc(1.3s + var(--ti, 0) * 0.03s) forwards;
+}
+
+@keyframes taglineIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes charIn {
+  to { opacity: 1; }
+}
+
+/* ── Progress bar at bottom ── */
+.splash::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--spring-green);
+  box-shadow: 0 0 12px rgba(2, 245, 161, 0.6);
+  animation: progressBar 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes progressBar {
+  0%   { width: 0; }
+  60%  { width: 70%; }
+  90%  { width: 95%; }
+  100% { width: 100%; }
+}

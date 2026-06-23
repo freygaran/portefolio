@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.app-content {
+  opacity: 0;
+  transform: scale(0.996);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+
+  &.app-ready {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+}

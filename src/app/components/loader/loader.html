@@ -1,0 +1,26 @@
+@if (phase() !== 'done') {
+  <div class="splash" [attr.data-phase]="phase()">
+
+    <div class="splash-word">
+      @for (letter of letters; track $index) {
+        <span
+          class="splash-letter"
+          [class.splash-a]="$index === 0"
+          [class.visible]="visibleCount() > $index"
+          [style.--idx]="$index"
+          [style.transform]="$index === 0 && morphStyle() ? morphStyle() : null">
+          {{ letter }}
+        </span>
+      }
+
+      <span class="splash-cursor" [class.blink]="phase() === 'typing'" [class.hidden]="phase() !== 'typing'">
+        @if (showCursor()) { | }
+      </span>
+    </div>
+
+    <div class="splash-tagline">
+      <span class="tl-char" style="--ti:0">D</span><span class="tl-char" style="--ti:1">é</span><span class="tl-char" style="--ti:2">v</span><span class="tl-char" style="--ti:3">e</span><span class="tl-char" style="--ti:4">l</span><span class="tl-char" style="--ti:5">o</span><span class="tl-char" style="--ti:6">p</span><span class="tl-char" style="--ti:7">p</span><span class="tl-char" style="--ti:8">e</span><span class="tl-char" style="--ti:9">u</span><span class="tl-char" style="--ti:10">r</span>&nbsp;<span class="tl-char" style="--ti:12">F</span><span class="tl-char" style="--ti:13">u</span><span class="tl-char" style="--ti:14">l</span><span class="tl-char" style="--ti:15">l</span><span class="tl-char" style="--ti:16">s</span><span class="tl-char" style="--ti:17">t</span><span class="tl-char" style="--ti:18">a</span><span class="tl-char" style="--ti:19">c</span><span class="tl-char" style="--ti:20">k</span>
+    </div>
+
+  </div>
+}

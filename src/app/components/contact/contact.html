@@ -1,0 +1,86 @@
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info" appReveal revealClass="reveal-left">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Travaillons <span>ensemble</span></h2>
+        <p class="contact-desc">
+          Vous avez un projet, une idée ou simplement envie d'échanger ?
+          Je suis ouvert aux opportunités freelance et aux postes en CDI.
+        </p>
+
+        <div class="social-list">
+          @for (s of socials; track s.name) {
+            <a [href]="s.url" class="social-item" target="_blank" rel="noopener">
+              <span class="social-icon" [innerHTML]="s.icon"></span>
+              <span class="social-info">
+                <span class="social-label">{{ s.name }}</span>
+                <span class="social-handle">{{ s.handle }}</span>
+              </span>
+              <svg class="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="contact-form-wrap" appReveal revealClass="reveal-right">
+        @if (!submitted()) {
+          <form class="contact-form" (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nom</label>
+                <input
+                  id="name" name="name" type="text"
+                  placeholder="Votre nom"
+                  [(ngModel)]="form.name" required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  id="email" name="email" type="email"
+                  placeholder="votre@email.com"
+                  [(ngModel)]="form.email" required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Sujet</label>
+              <input
+                id="subject" name="subject" type="text"
+                placeholder="Objet de votre message"
+                [(ngModel)]="form.subject" required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message" name="message" rows="5"
+                placeholder="Décrivez votre projet ou votre demande..."
+                [(ngModel)]="form.message" required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn" [class.loading]="loading()">
+              @if (loading()) {
+                <span class="spinner"></span>
+                Envoi en cours...
+              } @else {
+                Envoyer le message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              }
+            </button>
+          </form>
+        } @else {
+          <div class="success-state">
+            <div class="success-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Message envoyé !</h3>
+            <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+            <button class="btn btn-outline" (click)="resetForm()">Envoyer un autre message</button>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
