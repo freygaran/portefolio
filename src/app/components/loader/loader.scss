@@ -35,14 +35,21 @@
   letter-spacing: -0.01em;
   color: var(--text-primary);
   display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  /* Lettre pas encore tapée : invisible ET sans largeur → curseur colle au dernier caractère */
   opacity: 0;
-  transform: translateY(24px);
+  max-width: 0;
+  transform: translateY(18px);
   transition:
-    opacity 0.28s ease,
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width 0.06s ease,
+    opacity  0.22s ease,
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 
   &.visible {
     opacity: 1;
+    max-width: 2em;
     transform: translateY(0);
   }
 
@@ -50,6 +57,7 @@
   .splash[data-phase="fill"] &,
   .splash[data-phase="morph"] &,
   .splash[data-phase="exit"] & {
+    max-width: 2em; /* garder les lettres visibles dans ces phases */
     color: var(--spring-green);
     text-shadow: 0 0 32px rgba(2, 245, 161, 0.4);
     transition:
@@ -118,12 +126,12 @@
   color: var(--text-secondary);
   opacity: 0;
   transform: translateY(8px);
-  animation: taglineIn 0.5s ease 1.2s forwards;
+  animation: taglineIn 0.5s ease 3.5s forwards;
 }
 
 .tl-char {
   opacity: 0;
-  animation: charIn 0.3s ease calc(1.3s + var(--ti, 0) * 0.03s) forwards;
+  animation: charIn 0.3s ease calc(3.6s + var(--ti, 0) * 0.03s) forwards;
 }
 
 @keyframes taglineIn {
@@ -143,7 +151,7 @@
   height: 2px;
   background: var(--spring-green);
   box-shadow: 0 0 12px rgba(2, 245, 161, 0.6);
-  animation: progressBar 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: progressBar 5.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes progressBar {

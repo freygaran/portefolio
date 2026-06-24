@@ -18,7 +18,8 @@ export class RevealDirective implements OnInit, OnDestroy {
       ([entry]) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          this.observer.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('visible');
         }
       },
       { threshold: this.threshold }

@@ -34,11 +34,11 @@ export class Loader implements OnInit, OnDestroy {
 
   private runTyping() {
     let i = 0;
-    const delays = [200, 130, 145, 120, 155, 140, 130];
+    const delays = [500, 500, 500, 500, 500, 500, 500];
     const next = () => {
       if (i < this.letters.length) {
         this.visibleCount.set(++i);
-        setTimeout(next, delays[i] ?? 140);
+        setTimeout(next, delays[i] ?? 500);
       } else {
         clearInterval(this.cursorTimer);
         this.showCursor.set(true);
